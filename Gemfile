@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.2'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
