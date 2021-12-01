@@ -1,3 +1,14 @@
 // Place all the styles related to the user_posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.section {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.label {
+  width: 100%;
+}

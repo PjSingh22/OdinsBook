@@ -16,6 +16,46 @@
 
  @import "bulma";
 
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+ }
+
+ body {
+   width: 100vw;
+ }
+
  .notification.global-notification {
    margin: 0;
  }
+  .container {
+   background-color: lightgray;
+   height: 100%;
+  }
+
+  .column {
+    float: left;
+  }
+  
+  .side-bar, .right-bar {
+    width: 25%;
+  }
+
+  .message-feed {
+    width: 50%;
+
+    .message {
+      background-color: none;
+    }
+  }
+
+  .friend-choices {
+    text-align: center;
+  }
+
+// @media screen and (min-width: 1408px) {
+//   .container:not(.is-max-desktop):not(.is-max-widescreen) {
+//       max-width: 100%;
+//   }
+// }

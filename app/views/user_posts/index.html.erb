@@ -1,9 +1,31 @@
-<section class="section">
-  <div class="container">
-    <div class="columns">
-      <% if user_signed_in? %>
-        <%= render 'form' %>
+<div class="container">
+  <div class="column side-bar">
+    <p>dummy link</p>
+    <p>dummy link</p>
+    <p>dummy link</p>
+    <p>dummy link</p>
+  </div>
+  <div class="column message-feed">
+    <div class="message">
+      <%= simple_form_for(@user_post) do |f| %>
+        <%= f.error_notification %>
+        <div class="field">
+          <div class="control">
+            <%= f.input :message, label: false, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label"}, placeholder: "What's on your mind?", autofocus: true %>
+          </div>
+        </div>
+        <%= f.button :submit, class: "button is-info" %>
       <% end %>
     </div>
+    <div class="feed">
+      <p>under construction...</p>
+    </div>
   </div>
-</section>
+  <div class="column right-bar">
+    <div class="friend-choices">
+      <p>Person to friend</p>
+      <p>Person to friend</p>
+      <p>Person to friend</p>
+    </div>
+  </div>
+</div>
