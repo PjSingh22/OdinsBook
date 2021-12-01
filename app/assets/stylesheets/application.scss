@@ -15,3 +15,7 @@
  */
 
  @import "bulma";
+
+ .notification.is-danger.global-notification {
+   margin: 0;
+ }
