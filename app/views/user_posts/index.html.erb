@@ -1,27 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>User Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Message</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @user_posts.each do |user_post| %>
-      <tr>
-        <td><%= user_post.message %></td>
-        <td><%= link_to 'Show', user_post %></td>
-        <td><%= link_to 'Edit', edit_user_post_path(user_post) %></td>
-        <td><%= link_to 'Destroy', user_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User Post', new_user_post_path %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <% if user_signed_in? %>
+        <%= render 'form' %>
+      <% end %>
+    </div>
+  </div>
+</section>
