@@ -2,21 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.section {
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .label {
   width: 100%;
 }
 
 .container {
+  height: 100vh;
   width: 100vw;
+  padding-top: 10px;
   background-color: #E9EBEE;
 }
+.column {
+  float: left;
+}
+
+.left-column, .right-column {
+  width: 25%;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.right-column {
+  height: 40%;
+}
+
+.center-column {
+  width: 50%;
+}
+
+//first child of columns
+
 
 // @media screen and (min-width: 1408px) {
 //   .container:not(.is-max-desktop):not(.is-max-widescreen) {

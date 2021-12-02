@@ -29,26 +29,15 @@
  .notification.global-notification {
    margin: 0;
  }
-  .container {
-   height: 100vh;
-   padding-top: 10px;
-  }
-
-  .column {
-    float: left;
-  }
   
-  .side-bar, .right-bar {
-    width: 25%;
-  }
 
-  .message-feed {
-    width: 50%;
-
-    .message {
-      background-color: none;
-    }
+  .message {
+    background-color: white;
+    padding: 20px;
   }
+  // .message-feed {
+  //   width: 50%;
+  // }
 
   .side-bar {
     height: 100%;
@@ -56,6 +45,11 @@
 
   .friend-choices {
     text-align: center;
+  }
+
+  .textarea:not([rows]) {
+    max-height: 40em;
+    min-height: 0;
   }
 
 @media screen and (min-width: 1408px) {

@@ -27,7 +27,7 @@ class UserPostsController < ApplicationController
 
     respond_to do |format|
       if @user_post.save
-        format.html { redirect_to @user_post, notice: "User post was successfully created." }
+        format.html { redirect_to root_path, notice: "User post was successfully created." }
         format.json { render :show, status: :created, location: @user_post }
       else
         format.html { render :new, status: :unprocessable_entity }
