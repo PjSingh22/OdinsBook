@@ -30,8 +30,8 @@
    margin: 0;
  }
   .container {
-   background-color: lightgray;
-   height: 100%;
+   height: 100vh;
+   padding-top: 10px;
   }
 
   .column {
@@ -50,12 +50,16 @@
     }
   }
 
+  .side-bar {
+    height: 100%;
+  }
+
   .friend-choices {
     text-align: center;
   }
 
-// @media screen and (min-width: 1408px) {
-//   .container:not(.is-max-desktop):not(.is-max-widescreen) {
-//       max-width: 100%;
-//   }
-// }
+@media screen and (min-width: 1408px) {
+  .container:not(.is-max-desktop):not(.is-max-widescreen) {
+      max-width: 100vw;
+  }
+}
