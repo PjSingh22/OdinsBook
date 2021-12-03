@@ -4,7 +4,7 @@ class UserPostsController < ApplicationController
 
   # GET /user_posts or /user_posts.json
   def index
-    @user_posts = current_user.user_posts.all
+    @user_posts = current_user.user_posts.all.order(created_at: :desc)
     @user_post = UserPost.new
   end
 

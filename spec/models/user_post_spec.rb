@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe UserPost, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it "should return an error if message is blank" do
+      post = UserPost.new
+      expect(post.valid?).to eq(false)
+    end
+  end
 end

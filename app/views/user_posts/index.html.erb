@@ -18,7 +18,7 @@
       <% end %>
     </div>
     <div class="feed">
-      <% current_user.user_posts.each do |f|%>
+      <% @user_posts.each do |f|%>
         <div class="message">
           <div class="message-header">
             <div class="message-header-title">
@@ -37,9 +37,13 @@
   </div>
   <div class="column right-bar right-column">
     <div class="friend-choices">
-      <p>Person to friend</p>
-      <p>Person to friend</p>
-      <p>Person to friend</p>
+      <% current_user.friend_requests.each do |friend| %>
+        <div>
+        <%# work on adding accept and decline routes %>
+        <%# look up setting routes to use accept method %>
+          <%= User.find(friend.friend_id).name %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
