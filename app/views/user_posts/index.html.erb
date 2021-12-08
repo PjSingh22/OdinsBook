@@ -42,6 +42,7 @@
         <%# work on adding accept and decline routes %>
         <%# look up setting routes to use accept method %>
           <%= User.find(friend.friend_id).name %>
+          <%= link_to "Accept", friend_request_path(friend.friend_id), method: :put %>
         </div>
       <% end %>
     </div>
