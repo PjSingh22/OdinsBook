@@ -1,0 +1,4 @@
+<% @incoming.each do |f| %>
+  <%= User.find(f.user_id).name %>
+  <%= link_to "Accept", accept_friend_request_path(f.user_id), method: :post %>
+<% end %>

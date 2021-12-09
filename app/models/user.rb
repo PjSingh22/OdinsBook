@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
 
-  has_many :friend_requests, dependent: :destroy
+  has_many :friend_requests, dependent: :destroy, foreign_key: :user_id
   has_many :pending_friends, through: :friend_requests, source: :friend
 
   has_many :friendships, dependent: :destroy

@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :user_posts
   match 'users/:id' => 'users#show', :as => :user, :via => :get
-
+  match 'pending_requests' => 'friend_requests#index', :as => :pending_requests, :via => :get
   root 'user_posts#index'
 end
