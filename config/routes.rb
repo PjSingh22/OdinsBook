@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get 'friends/destroy'
   resources :friend_requests do
     member do
-      get :accept
+      post :accept
     end
   end
   devise_for :users
   resources :user_posts
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  match 'users/:id' => 'users#show', :as => :user, :via => :get
 
   root 'user_posts#index'
 end
