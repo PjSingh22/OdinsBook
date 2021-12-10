@@ -4,10 +4,10 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @friend = current_user.friends.build(friend_params)
+    @friend = current_user.friends.build(param[:friend_id])
     if @friend.save
       flash[:notice] = "Friend was successfully added."
-      redirect_to friends_path
+      render :index, status: :created, location: root_path
     else
       flash[:error] = "Unable to add friend."
       render :json => @friend.errors, :status => :unprocessable_entity

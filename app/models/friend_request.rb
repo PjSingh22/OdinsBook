@@ -8,7 +8,7 @@ class FriendRequest < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-  private 
+  private
 
   def not_self
     errors.add(:friend, "can't be the same as user") if user == friend
