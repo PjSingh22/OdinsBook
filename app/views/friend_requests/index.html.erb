@@ -1,4 +1,5 @@
 <% @incoming.each do |f| %>
-  <%= User.find(f.user_id).name %>
+  <%= User.find(f.user_id).name %> </b>
   <%= link_to "Accept", accept_friend_request_path(f.user_id), method: :post %>
+  <%= link_to "Reject", reject_friend_request_path(f.user_id), method: :post  %>
 <% end %>
