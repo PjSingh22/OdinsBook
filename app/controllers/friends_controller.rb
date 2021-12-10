@@ -6,6 +6,7 @@ class FriendsController < ApplicationController
   def create
     @friend = current_user.friends.build(param[:friend_id])
     if @friend.save
+      # figure out why it is not redirecting
       flash[:notice] = "Friend was successfully added."
       render :index, status: :created, location: root_path
     else

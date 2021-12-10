@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :friend_requests do
     member do
       post :accept
+      post :reject
     end
   end
   devise_for :users

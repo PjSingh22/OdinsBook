@@ -25,6 +25,11 @@ class FriendRequestsController < ApplicationController
     head :no_content
   end
 
+  def reject
+    destroy
+    head :no_content
+  end
+
   def destroy
     # fix this issue
     @friend_request = FriendRequest.where(user: params[:id], friend: current_user).first
