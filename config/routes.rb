@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'friends/index'
   get 'friends/destroy'
+  resources :friends, only: [:index, :create, :destroy]
   resources :friend_requests do
     member do
       post :accept

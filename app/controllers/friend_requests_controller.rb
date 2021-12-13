@@ -20,9 +20,18 @@ class FriendRequestsController < ApplicationController
   end
 
   def accept
-    Friendship.create(user: current_user, friend_id: params[:id])
+    # redirect_to friends_url(params[:id], method: :create)
+    # redirect_to Friendship.create(user: current_user, friend_id: params[:id])
+    # destroy
+    friend = User.find(params[:id])
+    current_user.friends << friend
+    redirect_to '/pending_requests'
+    flash[:notice] = "Friend request accepted"
+    # destroy
+  end
+
+  def reject
     destroy
-    head :no_content
   end
 
   def reject
