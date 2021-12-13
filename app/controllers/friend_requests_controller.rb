@@ -25,22 +25,28 @@ class FriendRequestsController < ApplicationController
     # destroy
     friend = User.find(params[:id])
     current_user.friends << friend
-    redirect_to '/pending_requests'
     flash[:notice] = "Friend request accepted"
-    # destroy
+    redirect_to '/pending_requests'
+    destroy
   end
 
   def reject
+    flash[:alert] = "Friend request rejected"
+    redirect_to '/pending_requests'
+    destroy
+  end
+
+  def update
+    @friend_request = FriendRequest.find(params[:id])
+    @friend_request.accept
     destroy
   end
 
   def destroy
-    # fix this issue
     @friend_request = FriendRequest.where(user: params[:id], friend: current_user).first
     if @friend_request.present?
       @friend_request.destroy
     end
-    head :no_content
   end
 
   private
