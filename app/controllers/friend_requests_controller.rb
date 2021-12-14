@@ -1,6 +1,4 @@
 class FriendRequestsController < ApplicationController
-  # before_action :set_friend_request, only: [:index, :create]
-
   def index
     @incoming = FriendRequest.where(friend: current_user)
     @outgoing = current_user.friend_requests
@@ -13,16 +11,12 @@ class FriendRequestsController < ApplicationController
     if @friend_request.save
       flash[:notice] = "Friend request sent"
       redirect_to users_path(friend)
-      # render :show, status: :created, location: @friend_request
     else
       render json: @friend_request.errors, status: :unprocessable_entity
     end
   end
 
   def accept
-    # redirect_to friends_url(params[:id], method: :create)
-    # redirect_to Friendship.create(user: current_user, friend_id: params[:id])
-    # destroy
     friend = User.find(params[:id])
     current_user.friends << friend
     flash[:notice] = "Friend request accepted"
@@ -36,17 +30,6 @@ class FriendRequestsController < ApplicationController
     destroy
   end
 
-  def update
-    @friend_request = FriendRequest.find(params[:id])
-    @friend_request.accept
-    destroy
-  end
-
-  def reject
-    destroy
-    head :no_content
-  end
-
   def destroy
     @friend_request = FriendRequest.where(user: params[:id], friend: current_user).first
     if @friend_request.present?
@@ -55,10 +38,6 @@ class FriendRequestsController < ApplicationController
   end
 
   private
-
-  def set_friend_request
-    @friend_request = FriendRequest.find(params[:id])
-  end
 
   def friend_request_params
     params.require(:friend_request).permit(:friend_id, :user_id)

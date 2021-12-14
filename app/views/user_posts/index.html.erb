@@ -31,6 +31,10 @@
           <div class="message-body">
             <%= f.message %>
           </div>
+          <div class="message-likes">
+            <p><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
+            <%= button_to 'Like', user_post_likes_path(f.id), method: :post %>
+          </div>
         </div>
       <% end %>
     </div>
