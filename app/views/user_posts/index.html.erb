@@ -32,13 +32,13 @@
             <%= f.message %>
           </div>
           <div class="message-likes">
-            <p><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
             <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
             <% if pre_like %>
               <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete %>
             <% else %>
               <%= button_to 'Like', user_post_likes_path(f.id), method: :post %>
             <% end %>
+            <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
           </div>
         </div>
       <% end %>
