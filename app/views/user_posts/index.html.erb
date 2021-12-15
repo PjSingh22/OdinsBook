@@ -7,41 +7,10 @@
   </div>
   <div class="column message-feed center-column">
     <div class="message">
-      <%= simple_form_for(@user_post) do |f| %>
-        <%= f.error_notification %>
-        <div class="field">
-          <div class="control">
-            <%= f.input :message, label: false, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label"}, placeholder: "What's on your mind?", autofocus: true %>
-          </div>
-        </div>
-        <%= f.button :submit, class: "button is-warning" %>
-      <% end %>
+      <%= render 'form', user_post: @user_post %>
     </div>
     <div class="feed">
-      <% @user_posts.each do |f|%>
-        <div class="message">
-          <div class="message-header">
-            <div class="message-header-title">
-              <%= f.user.name %>
-            </div>
-            <div class="message-header-date">
-              <%= f.created_at %>
-            </div>
-          </div>
-          <div class="message-body">
-            <%= f.message %>
-          </div>
-          <div class="message-likes">
-            <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
-            <% if pre_like %>
-              <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete %>
-            <% else %>
-              <%= button_to 'Like', user_post_likes_path(f.id), method: :post %>
-            <% end %>
-            <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'feed', user_post: @user_post %>
     </div>
   </div>
   <div class="column right-bar right-column">

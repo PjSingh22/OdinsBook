@@ -1,3 +1,24 @@
-<div class="feed">
-  under construction
-</div>
+<% @user_posts.each do |f|%>
+  <div class="message">
+    <div class="message-header">
+      <div class="message-header-title">
+        <%= f.user.name %>
+      </div>
+      <div class="message-header-date">
+        <%= f.created_at %>
+      </div>
+    </div>
+    <div class="message-body">
+      <%= f.message %>
+    </div>
+    <div class="message-likes">
+      <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete, class: "button is-success" %>
+      <% else %>
+        <%= button_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning" %>
+      <% end %>
+      <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
+    </div>
+  </div>
+<% end %>
