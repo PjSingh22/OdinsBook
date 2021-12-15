@@ -7,10 +7,9 @@ class FriendRequestsController < ApplicationController
   def create
     friend = User.find(params[:friend_id])
     @friend_request = current_user.friend_requests.create(friend: friend)
-
     if @friend_request.save
       flash[:notice] = "Friend request sent"
-      redirect_to users_path(friend)
+      redirect_to user_path(friend)
     else
       render json: @friend_request.errors, status: :unprocessable_entity
     end
