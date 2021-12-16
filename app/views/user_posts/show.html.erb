@@ -4,7 +4,36 @@
   <strong>Message:</strong>
   <%= @user_post.message %>
 </p>
+<% pre_like = @user_post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Unlike', user_post_like_path(@user_post.id, pre_like), method: :delete, class: "button is-success" %>
+  <% else %>
+    <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning" %>
+  <% end %>
 <p><%= @user_post.likes.count %> <%= (@user_post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<div class='comments'>
+  <% if @user_post.comments.any? %>
+    <% @user_post.comments.each do |f| %>
+      <div class='comment'>
+        <p><%= f.user.name %> says:</p>
+        <p><%= f.message %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No comments yet.</p>
+  <% end %>
+</div>
+<div class='comment-form'>
+  <%# <%= form_with(model: [@user_post, @user_post.comments, @user.comments.build]) do |f| %>
+    <%# <%= f.label :message %> %>
+    <%# <%= f.text_area :message, :size => '10x2', class: 'textarea' %> %>
+    <%# <%= f.submit 'Comment', class: 'button is-primary' %> %>
+  <%# <% end %> %> %>
+  <%= form_with(model: @comment, local: true) do |f| %>
+    <%= f.label :message %>
+    <%= f.text_area :message, :size => '10x2', class: 'textarea' %>
+    <%= f.submit 'Comment', class: 'button is-primary' %>
+  <% end %>
 
 <%= link_to 'Edit', edit_user_post_path(@user_post) %> |
 <%= link_to 'Back', user_posts_path %>

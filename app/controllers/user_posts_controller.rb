@@ -10,6 +10,13 @@ class UserPostsController < ApplicationController
 
   # GET /user_posts/1 or /user_posts/1.json
   def show
+    @user_post = UserPost.find(params[:id])
+    if @user_post.nil?
+      flash[:error] = "Post not found or doesn't exist"
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   # GET /user_posts/new

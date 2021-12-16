@@ -4,6 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.input :message, label: false, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label"}, placeholder: "What's on your mind?", autofocus: true %>
     <%= f.association :user_post %>
     <%= f.association :user %>
   </div>

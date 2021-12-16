@@ -12,12 +12,15 @@
       <%= f.message %>
     </div>
     <div class="message-likes">
-      <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete, class: "button is-success" %>
-      <% else %>
-        <%= button_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning" %>
-      <% end %>
+      <div class='post-buttons'>
+        <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like %>
+          <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete, class: "button is-success" %>
+        <% else %>
+          <%= button_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning" %>
+        <% end %>
+        <%= button_to 'comments', user_post_path(f.id), method: :get, class: "button is-primary" %>
+      </div>
       <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
     </div>
   </div>
