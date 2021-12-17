@@ -17,7 +17,6 @@ class UserPostsController < ApplicationController
     else
       render :show
     end
-    @comments = @user_post.comments.new
   end
 
   # GET /user_posts/new

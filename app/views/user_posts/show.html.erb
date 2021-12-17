@@ -4,10 +4,16 @@
   <strong>Message:</strong>
   <%= @user_post.message %>
 </p>
+<% pre_like = @user_post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Unlike', user_post_like_path(@user_post.id, pre_like), method: :delete, class: "button is-success" %>
+  <% else %>
+    <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning" %>
+  <% end %>
 <p><%= @user_post.likes.count %> <%= (@user_post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 <% @user_post.comments.each do |comment| %>
   <p>
-    <%= User.find(comment.user_id).name %>:</br>
+    <%= User.find(comment.user_id).name %>:</br> 
     <%= comment.message %>
   </p>
 <% end %>
