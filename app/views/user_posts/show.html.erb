@@ -11,10 +11,12 @@
     <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning" %>
   <% end %>
 <p><%= @user_post.likes.count %> <%= (@user_post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-<% @user_post.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <p>
     <%= User.find(comment.user_id).name %>:</br> 
     <%= comment.message %>
+    <%= link_to 'Edit', edit_comment_path(comment.id, user_post_id: comment.user_post_id) %>
+    <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
   </p>
 <% end %>
 <%= render 'comments/form' %>

@@ -10,6 +10,7 @@ class UserPostsController < ApplicationController
 
   # GET /user_posts/1 or /user_posts/1.json
   def show
+    @comments = Comment.where(user_post_id: @user_post.id).order(created_at: :desc)
     @user_post = UserPost.find(params[:id])
     if @user_post.nil?
       flash[:error] = "Post not found or doesn't exist"
