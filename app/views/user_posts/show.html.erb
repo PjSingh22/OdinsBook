@@ -5,6 +5,13 @@
   <%= @user_post.message %>
 </p>
 <p><%= @user_post.likes.count %> <%= (@user_post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<% @user_post.comments.each do |comment| %>
+  <p>
+    <%= User.find(comment.user_id).name %>:</br>
+    <%= comment.message %>
+  </p>
+<% end %>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_user_post_path(@user_post) %> |
 <%= link_to 'Back', user_posts_path %>
