@@ -39,7 +39,7 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class='control'>
-                <button class='button is-dark'>Inbox</button>
+                <%= link_to 'Inbox', 'pending_requests', class: 'button is-dark' %>
               </p>
 
               <% if user_signed_in? %>
