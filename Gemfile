@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.2'
 gem 'devise'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 gem 'simple_form'

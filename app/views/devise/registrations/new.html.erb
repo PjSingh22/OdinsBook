@@ -4,6 +4,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <% if resource.avatar.attached? %>
+      <%- image_tag(resource.avatar) %>
+    <% else %>
+      <%= image_tag('/default_profile.jpg') %>
+    <% end %>
     <%= f.input :username,
                 required: true,
                 autofocus: true,
