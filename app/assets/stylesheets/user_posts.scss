@@ -9,7 +9,6 @@
 .container {
   height: 100vh;
   width: 100vw;
-  padding-top: 10px;
   background-color: #E9EBEE;
 }
 .column {
@@ -18,12 +17,17 @@
 
 .left-column, .right-column {
   width: 25%;
-  border: 1px solid black;
   border-radius: 2px;
 }
 
+.left-column {
+  border-right: 1px solid black;
+}
+
 .right-column {
-  height: 40%;
+  height: 100vh;
+  border-left: 1px solid black;
+  display: flex;
 }
 
 .center-column {
@@ -38,6 +42,33 @@
 
 .avatar {
   border-radius: 50%;
+}
+
+.friend_avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.friend-choices {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+
+  .avatar-name {
+    display: flex;
+    align-items: center;
+
+    .friend-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
 }
 //first child of columns
 
