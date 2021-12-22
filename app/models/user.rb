@@ -30,7 +30,7 @@ class User < ApplicationRecord
     current_user.friends.destroy(friend)
   end
 
-  def no_relation # check if user is not friends with other user or have sent them a request.
+  def no_relations # check if user is not friends with other user or have sent them a request.
     join_statement = <<-SQL
       LEFT OUTER JOIN friendships
         ON (friendships.user_id = users.id OR friendships.friend_id = users.id)
