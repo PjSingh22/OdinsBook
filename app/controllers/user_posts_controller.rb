@@ -9,8 +9,8 @@ class UserPostsController < ApplicationController
 
     @friends = current_user.friends.pluck(:id)
     @friends_posts = UserPost.where(user_id: @friends).order(created_at: :desc)
-    @combined_posts = current_user.user_posts + @friends_posts.each  { |post| post }
-    @sorted_posts = @combined_posts.sort_by { |post| post.created_at }.reverse
+    @combined_posts = current_user.user_posts + @friends_posts.each { |post| post }
+    @sorted_posts = @combined_posts.sort_by(&:created_at).reverse
   end
 
   # GET /user_posts/1 or /user_posts/1.json

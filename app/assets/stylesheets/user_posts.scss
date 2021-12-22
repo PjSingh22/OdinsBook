@@ -6,6 +6,17 @@
   width: 100%;
 }
 
+.feed::-webkit-scrollbar {
+  display: none;
+}
+
+.feed {
+  height: 82vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: scroll;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -31,6 +42,7 @@
 }
 
 .center-column {
+  height: 90vh;
   width: 50%;
 }
 
