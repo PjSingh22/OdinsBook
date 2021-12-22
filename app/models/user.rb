@@ -30,6 +30,21 @@ class User < ApplicationRecord
     current_user.friends.destroy(friend)
   end
 
+  def no_relation # check if user is not friends with other user or have sent them a request.
+    join_statement = <<-SQL
+      LEFT OUTER JOIN friendships
+        ON (friendships.user_id = users.id OR friendships.friend_id = users.id)
+        AND (friendships.user_id = #{id} OR friendships.friend_id = #{id})
+      LEFT OUTER JOIN friend_requests
+        ON (friend_requests.user_id = users.id OR friend_requests.friend_id = users.id)
+        AND (friend_requests.friend_id = #{id} OR friend_requests.user_id = #{id})
+      SQL
+    
+    User.joins(join_statement)
+        .where( friendships: { id: nil }, friend_requests: { id: nil} )
+        .where.not(id: id)
+  end
+
   private
 
   def add_default_avatar
