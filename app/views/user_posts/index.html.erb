@@ -1,15 +1,6 @@
 <div class="container">
   <div class="column side-bar left-column">
-    <div class='avatar'>
-      <%= image_tag current_user.avatar_thumbnail, class: 'avatar user_avatar' %>
-    </div>
-    <div class='right-bar-links'>
-      <ul>
-        <p class='left-bar-link'><li><%= link_to 'Profile', user_path(current_user), class: 'left-link' %></li></p>
-        <p class='left-bar-link'><li><%= link_to 'Settings', edit_user_registration_path(current_user), class: 'left-link' %></li></p>
-        <p class='left-bar-link'><li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'left-link' %></li></p>
-      </ul>
-    </div>
+    <%= render 'left_bar' %>
   </div>
   <div class="column message-feed center-column">
     <div class="message">

@@ -1,8 +1,5 @@
-<%= @user.name %>
-<% unless @user == current_user %>
-  <%# <% if FriendRequest.include?(@user) %> %>
-    <p>Friend request sent</p>
-  <%# <% else %> %>
-    <%= link_to "send friend request",  friend_requests_path(friend_id: @user.id), method: :post %>
-  <%# <% end %> %>
-<% end %>
+<div class='profile-container'>
+  <div class='user-container'>
+    <%= render 'upper_info' %>
+  </div>
+</div>

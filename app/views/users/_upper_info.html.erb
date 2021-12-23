@@ -1,0 +1,19 @@
+<div class='upper-info'>
+  <div class='avatar'>
+    <%= image_tag current_user.avatar_thumbnail, class: 'avatar user_avatar' %>
+  </div>
+  <div class='user-name'>
+    <h1 class='name'><%= @user.name %></h1>
+  </div>
+  <div class='add-button'>
+    <% unless @user == current_user || current_user.friends.includes(@user.id) %>
+      <% if FriendRequest.where(friend_id: @user).exists? %>
+        <p>Friend request sent</p>
+      <% else %>
+        <%= link_to "send friend request",  friend_requests_path(friend_id: @user.id), method: :post, class: 'button is-primary' %>
+      <% end %>
+      <% else %>
+        <%= link_to "edit profile", edit_user_registration_path(@user), class: 'button is-primary' %>
+    <% end %>
+  </div>
+</div>
