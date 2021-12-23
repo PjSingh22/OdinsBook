@@ -48,6 +48,7 @@
 }
 
 .left-column {
+  text-align: center;
   border-right: 1px solid black;
 }
 
@@ -70,6 +71,18 @@
 
 .avatar {
   border-radius: 50%;
+}
+
+.right-bar-links {
+  margin-top: 1rem;
+}
+
+.left-link {
+  font-size: 2rem;
+}
+
+.left-bar-link {
+  padding: 1.5rem;
 }
 
 .friend_avatar {
