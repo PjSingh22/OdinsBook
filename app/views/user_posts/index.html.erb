@@ -3,10 +3,12 @@
     <div class='avatar'>
       <%= image_tag current_user.avatar_thumbnail, class: 'avatar user_avatar' %>
     </div>
-    <p>dummy link</p>
-    <p>dummy link</p>
-    <p>dummy link</p>
-    <p>dummy link</p>
+    <div class='right-bar-links'>
+      <p>dummy link</p>
+      <p>dummy link</p>
+      <p>dummy link</p>
+      <p>dummy link</p>
+    </div>
   </div>
   <div class="column message-feed center-column">
     <div class="message">
@@ -19,6 +21,9 @@
   <div class="column right-bar right-column">
     <div class='friend-suggs'>
       <%= render 'friend_suggestions' %>
+    </div>
+    <div class='friends'>
+      <%= render 'right_bar_friends' %>
     </div>
   </div>
 </div>

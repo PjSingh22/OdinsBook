@@ -1,4 +1,4 @@
-<p class='sugg-title'>Friend Suggestions</p>
+<p class='right-bar-title'>Friend Suggestions</p>
 <% suggestions = User.where.not(id: [current_user.friends.ids, current_user.id, current_user.friend_requests.each {|friend| friend.friend_id }]).order("Random()").limit(3) %>
 
 <% suggestions.each do |user|  %>

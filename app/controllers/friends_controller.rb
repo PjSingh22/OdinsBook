@@ -16,7 +16,15 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    current_user.remove_friend(@friend)
+    # current_user.remove_friend(@friend)
+    @friend = current_user.friends.find(params[:friend])
+    if @friend.destroy
+      flash[:notice] = "Friend was successfully removed."
+      redirect_to root_path
+    else
+      flash[:error] = "Unable to remove friend."
+      render :json => @friend.errors, :status => :unprocessable_entity
+    end
   end
 
   private
