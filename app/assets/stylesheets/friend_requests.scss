@@ -1,3 +1,29 @@
 // Place all the styles related to the FriendRequests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.pending-title {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 1em;
+  text-decoration: underline;
+}
+
+.requests-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 10px;
+
+  .pending-user {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+
+    .pending-layer {
+      padding: 0.5rem;
+    }
+  }
+}
