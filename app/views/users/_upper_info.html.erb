@@ -6,14 +6,18 @@
     <h1 class='name'><%= @user.name %></h1>
   </div>
   <div class='add-button'>
-    <% unless @user == current_user || current_user.friends.includes(@user.id) %>
+    <% unless @user == current_user %>
       <% if FriendRequest.where(friend_id: @user).exists? %>
         <p>Friend request sent</p>
       <% else %>
-        <%= link_to "send friend request",  friend_requests_path(friend_id: @user.id), method: :post, class: 'button is-primary' %>
+        <% if @user.friends.include? current_user %>
+          <%= link_to 'Unfriend', friends_destroy_path(friend: @user.id), method: :delete, class: 'button is-danger' %>
+        <% else %>
+          <%= link_to "send friend request",  friend_requests_path(friend_id: @user.id), method: :post, class: 'button is-primary' %>
+        <% end %>
       <% end %>
-      <% else %>
-        <%= link_to "edit profile", edit_user_registration_path(@user), class: 'button is-primary' %>
+    <% else %>
+      <%= link_to "edit profile", edit_user_registration_path(@user), class: 'button is-primary' %>
     <% end %>
   </div>
 </div>
