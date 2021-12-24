@@ -3,23 +3,39 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .user-container {
-  width: 25%;
-  // height: 100vh;
 
-  .upper-info {
-    height: 20%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .upper-container {
     border-bottom: 1px solid black;
-    padding-bottom: 1rem;
-
-    .user-name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+    .upper-info {
+      height: 38%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 1rem;
+  
+      .user-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+  
+      .user_avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+      }
     }
+  }
+
+  .show-feed::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .show-feed {
+    margin-top: 10px;
+    height: 64vh;
   }
 }

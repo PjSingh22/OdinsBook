@@ -1,5 +1,21 @@
-<div class='profile-container'>
-  <div class='user-container'>
-    <%= render 'upper_info' %>
+<div class='container'>
+  <div class="column side-bar left-column">
+    <%= render 'user_posts/left_bar' %>
+  </div>
+  <div class='column message-feed center-column user-container'>
+    <div class='upper-container'>
+      <%= render 'upper_info' %>
+    </div>
+    <div class="feed show-feed">
+      <%= render 'feed', user_post: @user_post %>
+    </div>
+  </div>
+  <div class="column right-bar right-column">
+    <div class='friend-suggs'>
+      <%= render 'user_posts/friend_suggestions' %>
+    </div>
+    <div class='friends'>
+      <%= render 'user_posts/right_bar_friends' %>
+    </div>
   </div>
 </div>
