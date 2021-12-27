@@ -115,7 +115,27 @@
     }
   }
 }
-//first child of columns
+
+// show post page
+.show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .show-comment-title {
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+  }
+  .comment-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+
 
 
 // @media screen and (min-width: 1408px) {

@@ -1,0 +1,54 @@
+<div class= 'show-container'>
+  <div class="message-container">
+    <div class="message show-message">
+      <div class="message-header show-header">
+        <div class="message-header-title show-title">
+          <%= @user_post.user.name %>
+        </div>
+        <div class="message-header-date show-date">
+          <%= @user_post.created_at %>
+        </div>
+      </div>
+      <div class="message-body show-body">
+        <%= @user_post.message %>
+      </div>
+      <div class="message-likes show-likes">
+        <div class='post-buttons show-buttons'>
+          <% pre_like = @user_post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to 'Unlike', user_post_like_path(@user_post.id, pre_like), method: :delete, class: "button is-success" %>
+          <% else %>
+            <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning" %>
+          <% end %>
+        </div>
+        <p class="likes-count"><%= @user_post.likes.count %> <%= (@user_post.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
+      </div>
+    </div>
+    </ul>
+    <div class='show-comments'>
+      <h2 class='show-comment-title'>Comments</h2>
+      <% @comments.each do |comment| %>
+        <div class='comment-container'>
+          <div class='message-header comment-header'>
+            <div class='comment-header-title'>
+              <%= User.find(comment.user_id).name %>
+            </div>
+            <div class='comment-header-date'>
+              <%= comment.created_at %>
+            </div>
+          </div>
+          <div class='message-body comment-body'>
+            <%= comment.message %>
+          </div>
+          <div class='comment-buttons'>
+            <%= link_to 'Edit', edit_comment_path(comment.id, user_post_id: comment.user_post_id) %>
+            <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class='comment-form'>
+    <%= render 'comments/form' %>
+  </div>
+</div>
