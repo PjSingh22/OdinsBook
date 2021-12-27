@@ -3,8 +3,9 @@
   <div class="column side-bar left-column">
     <%= render 'left_bar' %>
   </div>
-  <div class="column message-feed center-column">
+  <div id='show-mid-col', class="column message-feed center-column">
     <%= render 'show_message'%>
+    <%= render 'comments/form' %>
   </div>
   <div class="column right-bar right-column">
     <div class='friend-suggs'>
