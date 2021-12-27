@@ -17,7 +17,7 @@ class FriendsController < ApplicationController
 
   def destroy
     # current_user.remove_friend(@friend)
-    @friend = current_user.friends.find(params[:friend])
+    @friend = Friendship.find_by(user: current_user.id, friend: params[:friend]) || Friendship.find_by(user: params[:friend], friend: current_user.id)
     if @friend.destroy
       flash[:notice] = "Friend was successfully removed."
       redirect_to root_path

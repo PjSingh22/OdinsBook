@@ -1,6 +1,6 @@
 <div class='upper-info'>
   <div class='avatar'>
-    <%= image_tag current_user.avatar_thumbnail, class: 'user_avatar' %>
+    <%= image_tag User.find(params[:id]).avatar_thumbnail, class: 'user_avatar' %>
   </div>
   <div class='user-name'>
     <h1 class='name'><%= @user.name %></h1>

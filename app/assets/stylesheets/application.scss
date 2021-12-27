@@ -52,6 +52,49 @@
     min-height: 0;
   }
 
+  //edit profile page
+  .edit-title {
+    text-align: center;
+    font-size: 2em;
+    text-decoration: underline;
+  }
+  .edit-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+    .form-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      background-color: lightblue;
+      border-radius: 10px;
+      padding: 20px;
+
+      .avatar-edit-field {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .form-actions {
+        text-align: center;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .delete-account {
+    width: 100vw;
+    text-align: center;
+  }
+
 @media screen and (min-width: 1408px) {
   .container:not(.is-max-desktop):not(.is-max-widescreen) {
       max-width: 100vw;

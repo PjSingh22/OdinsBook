@@ -27,3 +27,14 @@
     }
   }
 }
+
+.no-request-container {
+  width: 100vw;
+
+  .no-requests {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 1em;
+    font-weight: bold;
+  }
+}

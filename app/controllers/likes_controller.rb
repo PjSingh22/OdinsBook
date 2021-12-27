@@ -20,7 +20,7 @@ class LikesController < ApplicationController
       @like.destroy
     end
     # redirect_to root_path
-    redirect_to session.delete(:return_to)
+    redirect_to root_path
     # redirect_back(fallback_location: root_path)
   end
 
