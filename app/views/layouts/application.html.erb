@@ -24,8 +24,14 @@
 
     <nav class="navbar is-warning">
       <div class="navbar-brand">
-        <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-5">OdinBook</h1>
+        <% if user_signed_in? %>
+          <%= link_to root_path, class: "navbar-item" do %>
+            <h1 class="title is-5">OdinBook</h1>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "navbar-item" do %>
+            <h1 class="title is-5">OdinBook</h1>
+          <% end %>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExample">
           <span></span>
@@ -38,11 +44,11 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
-              <p class='control'>
-                <%= link_to 'Inbox', '/pending_requests', class: 'button is-dark' %>
-              </p>
 
               <% if user_signed_in? %>
+                <p class='control'>
+                  <%= link_to 'Inbox', '/pending_requests', class: 'button is-dark' %>
+                </p>
                 <p class="control">
                   <%= link_to current_user.name, user_path(current_user), class: "button is-dark" %>
                 </p>

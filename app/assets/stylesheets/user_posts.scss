@@ -123,17 +123,31 @@
   flex-direction: column;
   justify-content: space-between;
 }
-  .show-comment-title {
-    text-align: center;
-    font-size: 1.5rem;
-    text-decoration: underline;
-    margin-bottom: 1rem;
-  }
+
+.show-comments::-webkit-scrollbar {
+  display: none;
+}
+
+.show-comment-title {
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+.show-comments {
+  height: 60vh;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
   .comment-container {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 1rem;
   }
+}
 
 
 

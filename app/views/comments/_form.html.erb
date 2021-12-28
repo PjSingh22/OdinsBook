@@ -1,5 +1,7 @@
 
 <%= form_for([@user_post, @user_post.comments.build]) do |f| %>
-  <%= f.text_area :message %>
-  <%= f.submit %>
+  <div>
+    <%= f.text_area :message, class:'comment-box' %>
+  </div>
+  <%= f.submit 'Submit', class: 'button is-primary' %>
 <% end %>

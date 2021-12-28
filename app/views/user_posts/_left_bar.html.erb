@@ -3,6 +3,8 @@
 </div>
 <div class='right-bar-links'>
   <ul>
+    <%# Feed root path %>
+    <p class='left-bar-link'><li><%= link_to 'Feed', root_path, class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Profile', user_path(current_user), class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Friends', friends_path(current_user), class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Pending Requests', pending_requests_path(current_user), class: 'left-link' %></li></p>
