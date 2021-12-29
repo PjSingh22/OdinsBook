@@ -49,6 +49,7 @@
           <div class="field">
             <div class="control">
               <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <p>*won't work for facebook users due to password tokenized.</p>
             </div>
         </div>
       </div>

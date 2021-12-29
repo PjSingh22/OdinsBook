@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  devise :omniauthable, omniauth_providers: %i[facebook]
 
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
@@ -18,32 +19,29 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
 
+  def self.from_omniauth(auth)
+    name = auth.info.name
+    user = User.where(email: auth.info.email).first
+    user ||= User.create!(provider: auth.provider, uid: auth.uid, name: name, username: auth.info.name, email: auth.info.email,password: Devise.friendly_token[0, 20])
+      user
+  end
+
   def avatar_thumbnail
-    if avatar.attached?
-      avatar.variant(resize: '300x300!').processed
-    else
-      '/default_profile.jpg'
+    # error handle
+    begin
+      if avatar.attached?
+        avatar.variant(resize: '300x300!').processed
+      else
+        '/default_profile.jpg'
+      end 
+    rescue => exception
+      exception.message
     end
   end
 
   def remove_friend(friend)
     current_user.friends.destroy(friend)
   end
-
-  # def no_relations # check if user is not friends with other user or have sent them a request.
-  #   join_statement = <<-SQL
-  #     LEFT OUTER JOIN friendships
-  #       ON (friendships.user_id = users.id OR friendships.friend_id = users.id)
-  #       AND (friendships.user_id = #{id} OR friendships.friend_id = #{id})
-  #     LEFT OUTER JOIN friend_requests
-  #       ON (friend_requests.user_id = users.id OR friend_requests.friend_id = users.id)
-  #       AND (friend_requests.friend_id = #{id} OR friend_requests.user_id = #{id})
-  #     SQL
-    
-  #   User.joins(join_statement)
-  #       .where( friendships: { id: nil }, friend_requests: { id: nil} )
-  #       .where.not(id: id)
-  # end
 
   private
 
