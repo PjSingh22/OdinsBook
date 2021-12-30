@@ -310,5 +310,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # ==> Configuration for :confirmable
-  config.omniauth :facebook, "1556152011387703", "977b162204d68b33659261c6fbae0d26"
+  config.omniauth :facebook, "1556152011387703", ENV['APP_SECRET']
 end
