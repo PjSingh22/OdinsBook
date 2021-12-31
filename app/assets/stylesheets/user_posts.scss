@@ -71,6 +71,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .post-buttons {
+    display: flex;
+    align-items: center;
+    width: 40%;
+
+    .post-link {
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .avatar {

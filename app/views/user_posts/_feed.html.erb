@@ -18,11 +18,15 @@
       <div class='post-buttons'>
         <% pre_like = f.likes.find { |like| like.user_id == current_user.id} %>
         <% if pre_like %>
-          <%= button_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete, class: "button is-success" %>
+          <%= link_to 'Unlike', user_post_like_path(f.id, pre_like), method: :delete, class: "button is-success post-link" %>
         <% else %>
-          <%= button_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning" %>
+          <%= link_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning post-link" %>
         <% end %>
-        <%= link_to 'comments', user_post_path(f.id) %>
+        <%= link_to 'comments', user_post_path(f.id), class: "button is-link post-link" %>
+        <% if f.user_id == current_user.id%>
+          <%= link_to 'edit', edit_user_post_path(f.id), class: "far fa-edit post-link" %>
+          <%= link_to 'delete', user_post_path(f.id), method: :delete, class: "far fa-trash-alt post-link" %>
+        <% end %>
       </div>
       <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
     </div>

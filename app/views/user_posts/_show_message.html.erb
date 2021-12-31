@@ -17,7 +17,11 @@
         <% if pre_like %>
           <%= button_to 'Unlike', user_post_like_path(@user_post.id, pre_like), method: :delete, class: "button is-success" %>
         <% else %>
-          <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning" %>
+          <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning post-link" %>
+        <% end %>
+          <% if @user_post.user_id == current_user.id %>
+            <%= link_to 'edit', edit_user_post_path(@user_post.id), class: "far fa-edit post-link" %>
+            <%= link_to 'delete', user_post_path(@user_post.id), method: :delete, class: "far fa-trash-alt post-link" %>
         <% end %>
       </div>
       <p class="likes-count"><%= @user_post.likes.count %> <%= (@user_post.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
@@ -41,6 +45,9 @@
         <div class='comment-buttons'>
           <% if comment.user_id == current_user.id %>
             <%= link_to 'Edit', edit_comment_path(comment.id, user_post_id: comment.user_post_id) %>
+            <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
+          <% end %>
+          <% if @user_post.user_id == current_user.id %>
             <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
           <% end %>
         </div>
