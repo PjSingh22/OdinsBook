@@ -5,7 +5,7 @@
         <%= f.user.name %>
       </div>
       <div class="message-header-date">
-        <%= f.created_at %>
+        <%= f.created_at.strftime("%Y-%m-%d") %>
       </div>
     </div>
     <div class="message-body">

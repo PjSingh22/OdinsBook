@@ -36,7 +36,7 @@
             <%= User.find(comment.user_id).name %>
           </div>
           <div class='comment-header-date'>
-            <%= comment.created_at %>
+            <%= comment.created_at.strftime("%Y-%m-%d") %>
           </div>
         </div>
         <div class='message-body comment-body'>
@@ -45,10 +45,13 @@
         <div class='comment-buttons'>
           <% if comment.user_id == current_user.id %>
             <%= link_to 'Edit', edit_comment_path(comment.id, user_post_id: comment.user_post_id) %>
-            <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
           <% end %>
           <% if @user_post.user_id == current_user.id %>
             <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
+          <% else %>
+            <% if @user_post.user_id == current_user.id %>
+              <%= link_to 'delete', user_post_comment_path(comment.id, user_post_id: comment.user_post_id), method: :delete %>
+            <% end %>
           <% end %>
         </div>
       </div>
