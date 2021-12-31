@@ -10,6 +10,9 @@
     </div>
     <div class="message-body">
       <%= f.message %>
+      <% if f.image.attached? %>
+        <%= image_tag f.image, style: "width: 100%; display: block;"%>
+      <% end %>
     </div>
     <div class="message-likes">
       <div class='post-buttons'>
