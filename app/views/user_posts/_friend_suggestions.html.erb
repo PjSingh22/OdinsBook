@@ -1,14 +1,18 @@
 <p class='right-bar-title'>Friend Suggestions</p>
-<% suggestions = User.where.not(id: [current_user.friends.ids, current_user.id, current_user.friend_requests.each {|friend| friend.friend_id }]).order("Random()").limit(3) %>
+<% suggestions = User.where.not(id: current_user.friends.ids + [current_user.id]).order("Random()").limit(3) %>
 
-<% suggestions.each do |user|  %>
-  <div class="friend-choices">
-    <div class='avatar-name'>
-      <span class='friend-sug friend-avatar'><%= image_tag user.avatar_thumbnail, class: 'avatar friend_avatar' %></span>
-      <span class='friend-sug friend-name'><%= link_to user.name, user_path(user) %></span>
+<% if suggestions.any? %>
+  <% suggestions.each do |user|  %>
+    <div class="friend-choices">
+      <div class='avatar-name'>
+        <span class='friend-sug friend-avatar'><%= image_tag user.avatar_thumbnail, class: 'avatar friend_avatar' %></span>
+        <span class='friend-sug friend-name'><%= link_to user.name, user_path(user) %></span>
+      </div>
+      <div class='add-button'>
+        <span class='friend-sug friend-add'><%= link_to '+', friend_requests_path(friend_id: user.id), method: :post %> </span>
+      </div>
     </div>
-    <div class='add-button'>
-      <span class='friend-sug friend-add'><%= link_to '+', friend_requests_path(friend_id: user.id), method: :post %> </span>
-    </div>
-  </div>
+  <% end %>
+<% else %>
+  <p class='no-friends'>No suggestions</p>
 <% end %>
