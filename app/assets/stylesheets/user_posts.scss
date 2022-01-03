@@ -49,6 +49,7 @@
 .left-column, .right-column {
   width: 25%;
   border-radius: 2px;
+  height: 100vh;
 }
 
 .left-column {
@@ -57,7 +58,6 @@
 }
 
 .right-column {
-  height: 100vh;
   border-left: 1px solid black;
   display: flex;
 }

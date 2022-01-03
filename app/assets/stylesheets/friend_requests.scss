@@ -2,39 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.pending-title {
-  text-align: center;
-  font-size: 1.5em;
-  padding: 1em;
-  text-decoration: underline;
-}
-
-.requests-container {
-  width: 100%;
-  height: 100%;
+.pending-container {
   display: flex;
-  padding: 10px;
+  flex-direction: row;
 
-  .pending-user {
-    display: flex;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px;
+  .mid-row {
+    width: 50%;
+    height: 95vh;
 
-    .pending-layer {
-      padding: 0.5rem;
+    .pending-user {
+      width: 35%;
+    }
+
+    .no-requests {
+      text-align: center;
+      font-size: 1.5em;
+      padding: 1em;
+      font-weight: bold;
     }
   }
 }
 
-.no-request-container {
-  width: 100vw;
-
-  .no-requests {
-    text-align: center;
-    font-size: 1.5em;
-    padding: 1em;
-    font-weight: bold;
-  }
+.center-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+  text-decoration: underline;
 }
+

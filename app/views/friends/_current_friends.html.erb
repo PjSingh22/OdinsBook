@@ -1,4 +1,4 @@
-<div class='requests-container'>
+<% if @current_user.friends.any? %>
   <% @current_user.friends.each do |f| %>
   <div class='pending-user'>
     <div class='pending-avatar pending-layer'>
@@ -12,4 +12,8 @@
     </div>
   </div>
   <% end %>
-</div>
+<% else %>
+  <div class='no-friends'>
+    <p>You have no friends at this time.</p>
+  </div>
+<% end %>

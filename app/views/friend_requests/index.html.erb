@@ -1,23 +1,17 @@
-<h1 class='pending-title'>Pending Requests</h1>
-<div class='requests-container'>
-  <% if @incoming.any? %>
-    <% @incoming.each do |f| %>
-    <div class='pending-user'>
-      <div class='pending-avatar pending-layer'>
-        <%= image_tag User.find(f.user_id).avatar_thumbnail, class: 'avatar friend_avatar' %>
-      </div>
-      <div class='pending-name pending-layer'>
-        <%= link_to User.find(f.user_id).name, user_path(f.user_id) %>
-      </div>
-      <div class='pending-choices pending-layer'>
-        <%= link_to "Accept", accept_friend_request_path(f.user_id), method: :post, class: 'button is-primary' %>
-        <%= link_to "Reject", reject_friend_request_path(f.user_id), method: :post, class: 'button is-danger'  %>
-      </div>
-    </div>
-    <% end %>
-  <% else %>
-  <div class='no-request-container'>
-    <h2 class='no-requests'>No Friend Requests At This Time.</h2>
+<div class='container pending-container'>
+  <div class="column side-bar left-column">
+    <%= render 'user_posts/left_bar' %>
   </div>
-  <% end %>
+  <div class='mid-row'>
+    <h1 class='center-title'>Pending Requests</h1>
+    <%= render 'pending_friends' %>
+  </div>
+  <div class="column right-bar right-column">
+    <div class='friend-suggs'>
+      <%= render 'user_posts/friend_suggestions' %>
+    </div>
+    <div class='friends'>
+      <%= render 'user_posts/right_bar_friends' %>
+    </div>
+  </div>
 </div>
