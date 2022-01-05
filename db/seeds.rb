@@ -9,3 +9,14 @@ puts 'seeding...'
 User.create(email: 'john@gmail.com', password: 'password', username: 'johnboy', name: 'John')
 User.create(email: 'jeff@jeff.com', password: 'password', username: 'jeffdoe', name: 'Jeff')
 puts 'seeded'
+
+
+def user_params(user)
+  name = `#{Faker::Name.first_name} #{Faker::Name.last_name}`
+  username = Faker::Internet.username(specifier: name)
+  email = Faker::Internet.email(name: name)
+  password = 'password'
+  blood_type = Faker::BloodType.type
+  education = Faker::Educator.campus
+
+end 
