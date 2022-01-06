@@ -22,7 +22,7 @@
         <% else %>
           <%= button_to 'Like', user_post_likes_path(f.id), method: :post, class: "button is-warning" %>
         <% end %>
-        <%= link_to 'comments', user_post_path(f.id) %>
+        <%= link_to 'comments', user_post_path(f.id), class: "button is-link post-link cmnt-btn" %>
       </div>
       <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
     </div>

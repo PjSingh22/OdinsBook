@@ -7,21 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'seeding...'
 
-
 def set_avatar!(user, name)
   filename = "#{name}.jpg"
-  path = Rails.root.join("app/assets/images/Seed Avatars", filename)
+  path = Rails.root.join("app/assets/images/seed_avatars", filename)
   File.open(path) do |io|
     user.avatar.attach(io: io, filename: filename)
   end
 end
 
-def set_user
-  name = `#{Faker::Name.first_name} #{Faker::Name.last_name}`
+def set_user(name)
+  name = name
   username = Faker::Internet.username(specifier: name)
   email = Faker::Internet.email(name: name)
   password = 'password'
-  blood_type = Faker::BloodType.type
+  blood_type = Faker::Blood.type
   education = Faker::University.name
 
   {
@@ -34,7 +33,7 @@ def set_user
   }
 end 
 
-@user = []
+@users_arr = []
 
 ActiveRecord::Base.transaction do
   Friendship.destroy_all
@@ -51,12 +50,17 @@ ActiveRecord::Base.transaction do
   ActiveRecord::Base.connection.reset_pk_sequence!('friend_requests')
   ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
-
-  40.times do |i|
-    @users << User.create!(set_user)
+  puts 'step 1 - creating users'
+  24.times do |i|
+    name = "#{Faker::Name.first_name} #{Faker::Name.last_name}" 
+    @users_arr << User.create!(set_user(name))
   end
 
-  User.create(email: 'john@gmail.com', password: 'password', username: 'johnboy', name: 'John')
+  test_user = User.create!(email: 'test@test.com', password: 'password', username: 'testuser', name: 'test', blood_type: 'A', education: 'University of California, Berkeley')
+
+  @users_arr << test_user 
+  puts 'step 1 done'
+  puts 'step 2 - creating posts'
 
   # create posts
   user_posts = []
@@ -66,17 +70,23 @@ ActiveRecord::Base.transaction do
             when 0..36 then Faker::GreekPhilosophers.quote
             when 37..72 then Faker::Quotes::Shakespeare.hamlet_quote
             when 73..108 then Faker::Quotes::Shakespeare.as_you_like_it_quote
-            when 109..144 then Faker::Quotes::Shakespeare.king_richard_iii_quote
+            when 109..120 then Faker::Quotes::Shakespeare.king_richard_iii_quote
             else Faker::Quotes::Shakespeare.romeo_and_juliet_quote
             end
 
-    user_posts << user_posts.create!(
-      body: body,
-      user_id: @users[rand(@users.length)],
+    user_posts << UserPost.create!(
+      message: body,
+      user_id: @users_arr[rand(@users_arr.length)].id,
       created_at: date,
       updated_at: date
     )
   end
-
+  puts 'step 2 done'
 end
+
+puts 'last step - setting avatar'
+@users_arr.each_with_index do |user, index|
+  set_avatar!(user, index)
+end
+puts 'avatars set'
 puts 'seeded'
