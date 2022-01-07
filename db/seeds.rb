@@ -51,19 +51,20 @@ ActiveRecord::Base.transaction do
   ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
   puts 'step 1 - creating users'
-  24.times do |i|
-    name = "#{Faker::Name.first_name} #{Faker::Name.last_name}" 
+  24.times do
+    name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
     @users_arr << User.create!(set_user(name))
   end
 
   test_user = User.create!(email: 'test@test.com', password: 'password', username: 'testuser', name: 'test', blood_type: 'A', education: 'University of California, Berkeley')
 
-  @users_arr << test_user 
+  @users_arr << test_user
   puts 'step 1 done'
   puts 'step 2 - creating posts'
 
   # create posts
   user_posts = []
+
   120.times do |i|
     date = Faker::Date.between(from: 2.years.ago, to: Date.today)
     body = case i
@@ -81,7 +82,24 @@ ActiveRecord::Base.transaction do
       updated_at: date
     )
   end
+
   puts 'step 2 done'
+
+  puts 'step 3 - creating comments'
+  comments = []
+  user_posts.each do |post|
+    rand(5).times do
+      user = @users_arr[rand(@users_arr.length)]
+      date = Faker::Date.between(from: post.created_at, to: Date.today)
+      body = Faker::Quote.jack_handey
+      comments << Comment.create!(user_post_id: post.id,
+                                  user_id: user.id,
+                                  message: body,
+                                  created_at: date,
+                                  updated_at: date)
+    end
+  end
+  puts 'step 3 done'
 end
 
 puts 'last step - setting avatar'

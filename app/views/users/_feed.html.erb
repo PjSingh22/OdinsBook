@@ -24,7 +24,10 @@
         <% end %>
         <%= link_to 'comments', user_post_path(f.id), class: "button is-link post-link cmnt-btn" %>
       </div>
-      <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
+      <div class='post-stats'>
+        <p class="likes-count"><%= f.likes.count %> <%= (f.likes.count) <= 1 ? 'Like' : 'Likes'%></p>
+        <p class='comments-count'><%= f.comments.count %> <%= (f.comments.count) <= 1 ? "Comment" : "Comments" %></p>
+      </div>
     </div>
   </div>
 <% end %>
