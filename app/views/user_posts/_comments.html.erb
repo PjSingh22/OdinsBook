@@ -1,0 +1,10 @@
+<% pre_like = @user_post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Unlike', user_post_like_path(@user_post.id, pre_like), method: :delete, class: "button is-success" %>
+  <% else %>
+    <%= button_to 'Like', user_post_likes_path(@user_post.id), method: :post, class: "button is-warning post-link" %>
+  <% end %>
+    <% if @user_post.user_id == current_user.id %>
+      <%= link_to 'edit', edit_user_post_path(@user_post.id), class: "far fa-edit post-link" %>
+      <%= link_to 'delete', user_post_path(@user_post.id), method: :delete, class: "far fa-trash-alt post-link" %>
+<% end %>

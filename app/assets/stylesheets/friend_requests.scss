@@ -6,6 +6,15 @@
   display: flex;
   flex-direction: row;
 
+  .requests-pending {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 95vh;
+    justify-content: center;
+  }
+
   .mid-row {
     width: 50%;
     height: 95vh;

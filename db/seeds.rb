@@ -100,6 +100,19 @@ ActiveRecord::Base.transaction do
     end
   end
   puts 'step 3 done'
+  puts 'step 4 - creating likes'
+  @users_arr.length.times do |i|
+    rand(user_posts.length / 7).times { Like.create!(user_post_id: user_posts[rand(user_posts.length)].id, user_id: @users_arr[i].id) }
+  end
+  puts 'step 4 done'
+  puts 'step 5 - creating friendships'
+  @users_arr.length.times do |i|
+    user_indices = ((i + 1)...@users_arr.length).to_a.shuffle
+    (user_indices.length / 3).times do
+      Friendship.create!(user_id: @users_arr[i].id, friend_id: @users_arr[(user_indices.pop)].id)
+    end
+  end
+  puts 'step 5 done'
 end
 
 puts 'last step - setting avatar'
