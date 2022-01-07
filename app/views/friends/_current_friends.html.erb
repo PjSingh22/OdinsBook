@@ -1,11 +1,13 @@
 <% if @current_user.friends.any? %>
   <% @current_user.friends.each do |f| %>
-  <div class='pending-user'>
-    <div class='pending-avatar pending-layer'>
-      <%= image_tag User.find(f.id).avatar_thumbnail, class: 'avatar friend_avatar' %>
-    </div>
-    <div class='pending-name pending-layer'>
-      <%= link_to f.name, user_path(f) %>
+  <div class='pending-user friend-obj'>
+    <div class='avatar-name'>
+      <div class='pending-avatar pending-layer'>
+        <%= image_tag User.find(f.id).avatar_thumbnail, class: 'avatar friend_avatar' %>
+      </div>
+      <div class='pending-name pending-layer'>
+        <%= link_to f.name, user_path(f) %>
+      </div>
     </div>
     <div class='pending-choices pending-layer'>
       <span class='friend-sug friend-add'><%= link_to 'Delete', friends_destroy_path(friend: f.id), method: :delete, class: 'button is-danger' %> </span>

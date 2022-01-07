@@ -13,12 +13,7 @@
     width: 50%;
     margin: 10px;
 
-    .list-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-
-    }
+    
     .no-friends {
       margin: 0 auto;
       font-size: 1.5em;
@@ -29,6 +24,23 @@
 }
 
 // for both friends and pending page
+
+.friend-obj {
+  justify-content: space-between;
+}
+
+.avatar-name {
+  display: flex;
+  align-items: center;
+}
+.list-container {
+  // 2 column grid
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  overflow-y: scroll;
+
+}
 .pending-user {
   display: flex;
   align-items: center;

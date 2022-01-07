@@ -5,23 +5,11 @@
 .pending-container {
   display: flex;
   flex-direction: row;
-
-  .requests-pending {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    height: 95vh;
-    justify-content: center;
-  }
+  height: 95vh;
 
   .mid-row {
     width: 50%;
     height: 95vh;
-
-    .pending-user {
-      width: 35%;
-    }
 
     .no-requests {
       text-align: center;
