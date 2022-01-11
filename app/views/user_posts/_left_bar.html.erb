@@ -2,6 +2,8 @@
   <%= image_tag current_user.avatar_thumbnail, class: 'avatar user_avatar' %>
 </div>
 <div class='right-bar-links'>
+  <p class='username'><%= current_user.name %></p>
+  <p class='username'>@<%= current_user.username %></p>
   <ul>
     <%# Feed root path %>
     <p class='left-bar-link'><li><%= link_to 'Feed', root_path, class: 'left-link' %></li></p>

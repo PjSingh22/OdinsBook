@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+    @user = current_user
+  end
+
   def show
     @user_posts = UserPost.where(user_id: params[:id]).all
     @user = User.find(params[:id])

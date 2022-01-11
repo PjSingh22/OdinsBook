@@ -50,6 +50,12 @@
 .left-column {
   text-align: center;
   border-right: 1px solid black;
+
+  .username {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+  }
 }
 
 .right-column {
