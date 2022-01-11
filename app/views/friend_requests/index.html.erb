@@ -4,9 +4,15 @@
   </div>
   <div class='mid-row'>
     <h1 class='center-title'>Pending Requests</h1>
-    <div class='list-container'>
-    <%= render 'pending_friends' %>
-    </div>
+     <% if @incoming.any? %> 
+      <div class='list-container'>
+      <%= render 'pending_friends' %>
+      </div>
+    <% else %>
+      <div class='no-request-container'>
+        <h2 class='no-requests'>No Friend Requests At This Time.</h2>
+      </div>
+    <% end %>
   </div>
   <div class="column right-bar right-column">
     <div class='friend-suggs'>

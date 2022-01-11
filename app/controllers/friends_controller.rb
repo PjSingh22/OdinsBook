@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
     @friend = Friendship.find_by(user: current_user.id, friend: params[:friend]) || Friendship.find_by(user: params[:friend], friend: current_user.id)
     if @friend.destroy
       flash[:notice] = "Friend was successfully removed."
-      redirect_to root_path
+      redirect_to '/friends'
     else
       flash[:error] = "Unable to remove friend."
       render :json => @friend.errors, :status => :unprocessable_entity

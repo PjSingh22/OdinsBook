@@ -1,22 +1,16 @@
-  <% if @incoming.any? %>
-    <% @incoming.each do |f| %>
-    <div class='pending-user friend-obj'>
-      <div class='avatar-name'>
-        <div class='pending-avatar pending-layer'>
-          <%= image_tag User.find(f.user_id).avatar_thumbnail, class: 'avatar friend_avatar' %>
-        </div>
-        <div class='pending-name pending-layer'>
-          <%= link_to User.find(f.user_id).name, user_path(f.user_id) %>
-        </div>
+<% @incoming.each do |f| %>
+  <div class='pending-user friend-obj'>
+    <div class='avatar-name'>
+      <div class='pending-avatar pending-layer'>
+        <%= image_tag User.find(f.user_id).avatar_thumbnail, class: 'avatar friend_avatar' %>
       </div>
-      <div class='pending-choices pending-layer'>
-        <span><%= link_to "Accept", accept_friend_request_path(f.user_id), method: :post, class: 'button is-primary' %></span>
-        <span><%= link_to "Reject", reject_friend_request_path(f.user_id), method: :post, class: 'button is-danger'  %></span>
+      <div class='pending-name pending-layer'>
+        <%= link_to User.find(f.user_id).name, user_path(f.user_id) %>
       </div>
     </div>
-    <% end %>
-  <% else %>
-  <div class='no-request-container'>
-    <h2 class='no-requests'>No Friend Requests At This Time.</h2>
+    <div class='pending-choices pending-layer'>
+      <span><%= link_to "Accept", accept_friend_request_path(f.user_id), method: :post, class: 'button is-primary' %></span>
+      <span><%= link_to "Reject", reject_friend_request_path(f.user_id), method: :post, class: 'button is-danger'  %></span>
+    </div>
   </div>
-  <% end %>
+<% end %>

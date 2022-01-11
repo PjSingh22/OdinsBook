@@ -4,9 +4,15 @@
   </div>
   <div class='mid-row'>
     <h1 class='center-title'>Friends List</h1>
-    <div class="list-container">
-      <%= render 'current_friends' %>
-    </div>
+    <% if @current_user.friends.any? %>
+      <div class="list-container">
+        <%= render 'current_friends' %>
+      </div>
+    <% else %>
+      <div class='no-request-container'>
+        <h2 class='no-requests'>You have no friends at this time.</h2>
+      </div>
+    <% end %>
   </div>
   <div class="column right-bar right-column">
     <div class='friend-suggs'>

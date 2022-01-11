@@ -5,9 +5,19 @@
   <div class='user-name'>
     <h1 class='name'><%= @user.name %></h1>
   </div>
+  <div class='user-info'>
+    <span class='upper-info-item' >
+      <i class="fas fa-tint"></i>-type: 
+      <%= @user.blood_type %>
+    </span>
+    <span class='upper-info-item' >
+      <i class="fas fa-graduation-cap"></i>: 
+      <%= @user.education %></span>
+  </div>
   <div class='add-button'>
     <% unless @user == current_user %>
-      <% if FriendRequest.where(friend_id: @user).exists? %>
+    <% valid_request = FriendRequest.where(friend_id: @user) %>
+      <% if valid_request.exists? %>
         <p>Friend request sent</p>
       <% else %>
         <% if @user.friends.include? current_user %>

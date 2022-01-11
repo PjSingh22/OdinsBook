@@ -6,14 +6,9 @@
   width: 100%;
 }
 
-.feed::-webkit-scrollbar {
-  display: none;
-}
-
 .feed {
   height: 81vh;
   -ms-overflow-style: none;
-  scrollbar-width: none;
   overflow: scroll;
 }
 

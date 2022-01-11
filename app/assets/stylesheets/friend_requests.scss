@@ -11,12 +11,6 @@
     width: 50%;
     height: 95vh;
 
-    .no-requests {
-      text-align: center;
-      font-size: 1.5em;
-      padding: 1em;
-      font-weight: bold;
-    }
   }
 }
 
@@ -28,3 +22,14 @@
   text-decoration: underline;
 }
 
+//shared with frieds page
+.no-request-container {
+  text-align: center;
+
+  .no-requests {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 1em;
+    font-weight: bold;
+  }
+}
