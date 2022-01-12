@@ -10,6 +10,7 @@
     <p class='left-bar-link'><li><%= link_to 'Profile', user_path(current_user), class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Friends', friends_path(current_user), class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Pending Requests', pending_requests_path(current_user), class: 'left-link' %></li></p>
+    <p class='left-bar-link'><li><%= link_to 'All Users', all_users_path, class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Settings', edit_user_registration_path(current_user), class: 'left-link' %></li></p>
     <p class='left-bar-link'><li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'left-link' %></li></p>
   </ul>

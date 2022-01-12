@@ -1,5 +1,5 @@
 <div class='users-container'>
-  <% @current_user.friends.each do |f| %>
+  <% @everyone_else.each do |f| %>
     <div class='pending-user friend-obj'>
       <div class='avatar-name'>
         <div class='pending-avatar pending-layer'>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class='pending-choices pending-layer'>
-        <span class='friend-sug friend-add'><%= link_to 'Delete', friends_destroy_path(friend: f.id), method: :delete, class: 'button is-danger' %> </span>
+        <%= link_to "Add",  friend_requests_path(friend_id: f.id), method: :post, class: 'button is-primary' %>
       </div>
     </div>
   <% end %>

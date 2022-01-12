@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def show
     @user_posts = UserPost.where(user_id: params[:id]).all
     @user = User.find(params[:id])
-    # @users = User.all
+  end
+
+  def all_other_users
+    @everyone_else = User.all.where.not(id: current_user.id)
   end
 end

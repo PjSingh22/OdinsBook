@@ -1,0 +1,25 @@
+<div class='container friends-container'>
+  <div class="column side-bar left-column">
+    <%= render 'user_posts/left_bar' %>
+  </div>
+  <div class='mid-row'>
+    <h1 class='center-title'>All Users</h1>
+    <% if @current_user.friends.any? %>
+      <div class="list-container">
+        <%= render 'everyone_else' %>
+      </div>
+    <% else %>
+      <div class='no-request-container'>
+        <h2 class='no-requests'>No users here...</h2>
+      </div>
+    <% end %>
+  </div>
+  <div class="column right-bar right-column">
+    <div class='friend-suggs'>
+      <%= render 'user_posts/friend_suggestions' %>
+    </div>
+    <div class='friends'>
+      <%= render 'user_posts/right_bar_friends' %>
+    </div>
+  </div>
+</div>

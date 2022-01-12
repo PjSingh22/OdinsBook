@@ -34,13 +34,16 @@
   align-items: center;
 }
 .list-container {
-  // 2 column grid
+  overflow-y: scroll;
+  height: 95vh;
+}
+
+.users-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  overflow-y: scroll;
-
 }
+
 .pending-user {
   display: flex;
   align-items: center;

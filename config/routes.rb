@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   match 'users/:id' => 'users#show', :as => :user, :via => :get
   match 'pending_requests' => 'friend_requests#index', :as => :pending_requests, :via => :get
+  get 'all_users' => 'users#all_other_users'
   # edit user profile
   # match 'users/edit/:id' => 'users#edit', :as => :edit_profile, :via => :get
 
