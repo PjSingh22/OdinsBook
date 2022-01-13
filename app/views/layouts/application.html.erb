@@ -28,6 +28,9 @@
           <%= link_to root_path, class: "navbar-item" do %>
             <h1 class="title is-5">OdinsList</h1>
           <% end %>
+            <div class='search-form border-right'>
+              <%= render 'users/search_form' %>
+            </div>
         <% else %>
           <%= link_to new_user_session_path, class: "navbar-item" do %>
             <h1 class="title is-5">OdinsList</h1>

@@ -1,0 +1,23 @@
+<div class='users-container'>
+  <% @searched_users.each do |f| %>
+    <div class='pending-user friend-obj'>
+      <div class='avatar-name'>
+        <div class='pending-avatar pending-layer'>
+          <%= image_tag User.find(f.id).avatar_thumbnail, class: 'avatar friend_avatar' %>
+        </div>
+        <div class='pending-name pending-layer'>
+          <%= link_to f.name, user_path(f) %>
+        </div>
+      </div>
+      <div class='pending-choices pending-layer'>
+        <% if current_user.friends.where(id: f.id).any? %>
+          <%= link_to 'Delete', friends_destroy_path(friend: f.id), method: :delete, class: 'button is-danger' %>
+        <% elsif FriendRequest.where(user_id: current_user.id, friend_id: f.id).any? %>
+          <p>Request Sent</p>
+        <% else %>
+          <%= link_to "Add",  friend_requests_path(friend_id: f.id), method: :post, class: 'button is-primary' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

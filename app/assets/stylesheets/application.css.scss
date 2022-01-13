@@ -31,6 +31,16 @@
  .notification.global-notification {
    margin: 0;
  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-box {
+    width: 20vw;
+    height: 3vh;
+  }
   
 
   .message {

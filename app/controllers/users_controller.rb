@@ -13,4 +13,9 @@ class UsersController < ApplicationController
   def all_other_users
     @everyone_else = User.all.where.not(id: current_user.id)
   end
+
+  def search
+    @query = params[:query].downcase
+    @searched_users = User.where("LOWER(name) LIKE ?", "%#{@query}%").order(:name)
+  end
 end

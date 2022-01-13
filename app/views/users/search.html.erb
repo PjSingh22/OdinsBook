@@ -3,16 +3,10 @@
     <%= render 'user_posts/left_bar' %>
   </div>
   <div class='mid-row'>
-    <h1 class='center-title'>All Users</h1>
-    <% if @everyone_else.any? %>
+    <h1 class='center-title'>Searched Users</h1>
       <div class="list-container">
-        <%= render 'everyone_else' %>
+        <%= render 'searched_users'%>
       </div>
-    <% else %>
-      <div class='no-request-container'>
-        <h2 class='no-requests'>No users here...</h2>
-      </div>
-    <% end %>
   </div>
   <div class="column right-bar right-column">
     <div class='friend-suggs'>
