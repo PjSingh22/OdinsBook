@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Comment was successfully posted!"
-      redirect_to user_post_path(@user_post)
+      redirect_back fallback_location: root_path
     else
       render 'new'
     end

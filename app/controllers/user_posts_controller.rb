@@ -40,7 +40,7 @@ class UserPostsController < ApplicationController
 
     respond_to do |format|
       if @user_post.save
-        format.html { redirect_to root_path, notice: "User post was successfully created." }
+        format.html { redirect_back fallback_location: root_path, notice: "User post was successfully created." }
         format.json { render :show, status: :created, location: @user_post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class UserPostsController < ApplicationController
   def update
     respond_to do |format|
       if @user_post.update(user_post_params)
-        format.html { redirect_to @user_post, notice: "User post was successfully updated." }
+        format.html { redirect_back fallback_location: root_path, notice: "User post was successfully updated." }
         format.json { render :show, status: :ok, location: @user_post }
       else
         format.html { render :edit, status: :unprocessable_entity }

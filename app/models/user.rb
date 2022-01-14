@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :blood_type, length: { maximum: 3 }
 
   has_many :friend_requests, dependent: :destroy, foreign_key: :user_id
   has_many :pending_friends, through: :friend_requests, source: :friend

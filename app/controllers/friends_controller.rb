@@ -8,7 +8,7 @@ class FriendsController < ApplicationController
     if @friend.save
       # figure out why it is not redirecting
       flash[:notice] = "Friend was successfully added."
-      redirect_to '/pending_requests'
+      redirect_back fallback_location: root_path
     else
       flash[:error] = "Unable to add friend."
       render :json => @friend.errors, :status => :unprocessable_entity
@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
     @friend = Friendship.find_by(user: current_user.id, friend: params[:friend]) || Friendship.find_by(user: params[:friend], friend: current_user.id)
     if @friend.destroy
       flash[:notice] = "Friend was successfully removed."
-      redirect_to '/friends'
+      redirect_back fallback_location: root_path
     else
       flash[:error] = "Unable to remove friend."
       render :json => @friend.errors, :status => :unprocessable_entity

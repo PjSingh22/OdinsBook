@@ -19,13 +19,13 @@ class FriendRequestsController < ApplicationController
     friend = User.find(params[:id])
     current_user.friends << friend
     flash[:notice] = "Friend request accepted"
-    redirect_to '/pending_requests'
+    redirect_back fallback_location: root_path
     destroy
   end
 
   def reject
     flash[:alert] = "Friend request rejected"
-    redirect_to '/pending_requests'
+    redirect_back fallback_location: root_path
     destroy
   end
 
