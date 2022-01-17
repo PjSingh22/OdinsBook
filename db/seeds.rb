@@ -51,7 +51,7 @@ ActiveRecord::Base.transaction do
   ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
   puts 'step 1 - creating users'
-  24.times do
+  23.times do
     name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
     @users_arr << User.create!(set_user(name))
   end
@@ -115,9 +115,9 @@ ActiveRecord::Base.transaction do
   puts 'step 5 done'
 end
 
-puts 'last step - setting avatar'
-@users_arr.each do |user|
-  set_avatar!(user)
-end
-puts 'avatars set'
+# puts 'last step - setting avatar'
+# @users_arr.each do |user|
+#   set_avatar!(user)
+# end
+# puts 'avatars set'
 puts 'seeded'
