@@ -33,7 +33,7 @@ class User < ApplicationRecord
       if avatar.attached?
         avatar.variant(resize: '300x300!').processed
       else
-        'app/assets/images/default_profile.jpg'
+        '/default_profile.jpg'
       end 
     rescue => exception
       exception.message
