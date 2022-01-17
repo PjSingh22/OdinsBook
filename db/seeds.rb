@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'seeding...'
 
-def set_avatar!(user, name)
-  filename = "#{name}.jpg"
-  path = Rails.root.join("app/assets/images/seed_avatars", filename)
+def set_avatar!(user)
+  filename = "default_profile.jpg"
+  path = Rails.root.join("app/assets/images", filename)
   File.open(path) do |io|
     user.avatar.attach(io: io, filename: filename)
   end
@@ -115,9 +115,9 @@ ActiveRecord::Base.transaction do
   puts 'step 5 done'
 end
 
-# puts 'last step - setting avatar'
-# @users_arr.each_with_index do |user, index|
-#   set_avatar!(user, index)
-# end
-# puts 'avatars set'
+puts 'last step - setting avatar'
+@users_arr.each do |user|
+  set_avatar!(user)
+end
+puts 'avatars set'
 puts 'seeded'
