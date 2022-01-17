@@ -115,9 +115,9 @@ ActiveRecord::Base.transaction do
   puts 'step 5 done'
 end
 
-puts 'last step - setting avatar'
-@users_arr.each_with_index do |user, index|
-  set_avatar!(user, index)
-end
-puts 'avatars set'
+# puts 'last step - setting avatar'
+# @users_arr.each_with_index do |user, index|
+#   set_avatar!(user, index)
+# end
+# puts 'avatars set'
 puts 'seeded'
