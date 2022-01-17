@@ -23,3 +23,7 @@ class ApplicationController < ActionController::Base
     UserMailer.with(user: @user).welcome_email.deliver_now
   end
 end
+
+def set_avatar
+  @user.add_default_avatar unless @user.avatar.attached?
+end
