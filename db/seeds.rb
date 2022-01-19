@@ -113,11 +113,11 @@ ActiveRecord::Base.transaction do
     end
   end
   puts 'step 5 done'
+  puts 'last step - setting avatar'
+  @users_arr.each do |user|
+    set_avatar!(user)
+  end
+  puts 'avatars set'
 end
 
-puts 'last step - setting avatar'
-@users_arr.each do |user|
-  set_avatar!(user)
-end
-puts 'avatars set'
 puts 'seeded'
