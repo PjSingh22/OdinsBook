@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
+  validate :acceptable_avatar
 
   def self.from_omniauth(auth)
     name = auth.info.name
@@ -26,6 +27,20 @@ class User < ApplicationRecord
     user ||= User.create!(provider: auth.provider, uid: auth.uid, name: name, username: auth.info.name, email: auth.info.email,password: Devise.friendly_token[0, 20])
       user
   end
+
+  def acceptable_avatar
+    return unless avatar.attached?
+
+    unless avatar.blob.byte_size <= 2.megabytes
+      errors.add(:avatar, "is too large")
+    end
+
+    acceptable_types = ["image/jpeg", "image/png"]
+    unless acceptable_types.include?(avatar.content_type)
+      errors.add(:avatar, "must be a JPEG or PNG")
+    end
+  end
+
 
   def avatar_thumbnail
     # error handle
