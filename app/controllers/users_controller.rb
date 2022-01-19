@@ -18,4 +18,10 @@ class UsersController < ApplicationController
     @query = params[:query].downcase
     @searched_users = User.where("LOWER(name) LIKE ?", "%#{@query}%").order(:name)
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :blood_type, :education, :username)
+  end
 end
