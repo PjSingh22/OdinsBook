@@ -6,11 +6,3 @@
 # stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
 # stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
 #
-APP_SECRET: '977b162204d68b33659261c6fbae0d26'
-GMAIL_USERNAME: 'odinslistbypj@gmail.com'
-GMAIL_PASSWORD: '1357900Aa!'
-
-production:
-  APP_SECRET: '977b162204d68b33659261c6fbae0d26'
-  GMAIL_USERNAME: 'odinslistbypj@gmail.com'
-  GMAIL_PASSWORD: '1357900Aa!'

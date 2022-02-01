@@ -16,3 +16,7 @@ You should write at least a basic set of integration tests which let you know if
 This project will give you a chance to take a relatively high level set of requirements and turn it into a functioning website. You’ll need to read through the documentation on GitHub for some of the gems you’ll be using.
 
 source: https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/rails-final-project
+
+BUGS:
+* random generated users profile pifctures are broken because there is a bug that creates an activerecord error if I generate them. User can still upload their own pictures and are created with a default picture.
+* facebook users can't set a profile picture because their password is tokenized and is needed to save changes.
