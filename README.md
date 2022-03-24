@@ -1,5 +1,6 @@
 # README
-
+// Use a fake email while signing up
+* disclaminer: signing up throws an error due to hackers trying to log into my mailers email. just go back a page and sign in; it will work.
 
 # Project: Building Facebook
 You’ve come a long way, congratulations! At this point, you should feel comfortable with building new Rails applications, modelling data, and working with forms. This project will require you to put all your newfound knowledge to the test. It should serve as a great portfolio piece for what you’re capable of. It’ll take some thought and time but it’s certainly within reach of your skills.
