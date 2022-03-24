@@ -1,5 +1,5 @@
 # README
-// Use a fake email while signing up
+* Use a fake email while signing up
 * disclaminer: signing up throws an error due to hackers trying to log into my mailers email. just go back a page and sign in; it will work.
 
 # Project: Building Facebook
